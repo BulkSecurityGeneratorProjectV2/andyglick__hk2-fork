@@ -51,6 +51,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.*;
 
 import com.sun.enterprise.module.ModulesRegistry;
@@ -76,7 +77,7 @@ public class ServiceLocatorTest {
 
 	@BeforeClass
 	public static void createTestInhabitantsFile() throws Exception {
-		testFile = File.createTempFile("aaaa", "bbbb");
+		testFile = Files.createTempFile("aaaa", "bbbb").toFile();
 		testFile.deleteOnExit();
 		BufferedWriter output = null;
 		try {

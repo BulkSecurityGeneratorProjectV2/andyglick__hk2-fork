@@ -252,7 +252,7 @@ public class GeneratorRunner {
         
         byte buffer[] = new byte[1024];
         
-        File tmpJarFile = File.createTempFile(jarFile.getName(), ".tmp", outjar.getParentFile());
+        File tmpJarFile = Files.createTempFile(outjar.getParentFile().toPath(), jarFile.getName(), ".tmp").toFile();
         
         FileInputStream fis = new FileInputStream(jarFile);
         ZipInputStream zis = new ZipInputStream(fis);
@@ -373,7 +373,7 @@ public class GeneratorRunner {
             outFile = noSwapFile;
         }
         else {
-            outFile = File.createTempFile(locatorName, ".tmp", outDir);
+            outFile = Files.createTempFile(outDir.toPath(), locatorName, ".tmp").toFile();
         }
         
         if (verbose) {
